@@ -5,13 +5,14 @@ import './App.css';
 import Inicio from './Home/Inicio'
 import Categorias from './Jogo/Categorias';
 import Perguntas from './Jogo/Perguntas';
-import Resultado from './Jogo/Resutado'
+import Resultado from './Jogo/Resultado';
+import Ranking from './Jogo/Ranking';
 
 function App() {
   return (
     <div className="App">
       <Inicio />
-      <Resultado />
+      <Ranking />
     </div>
   );
 }
