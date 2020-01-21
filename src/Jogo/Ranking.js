@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import { Container, List } from 'semantic-ui-react';
 
+import Navegacao from './Navegacao';
 import Usuario from './Usuario';
 
 class Ranking extends Component {
     render() {
         return (
             <div>
+                <Navegacao />
                 <h2>RANKING</h2>
                 <p>Quem é o mestre???</p>
 

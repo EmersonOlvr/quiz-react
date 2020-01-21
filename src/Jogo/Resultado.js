@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {List, Label} from 'semantic-ui-react';
 
+import Navegacao from './Navegacao';
+
 class Resultado extends Component {
     render() {
         return (
             <div>
+                <Navegacao />
                 <h2>Seus resultados</h2>
                 <p>Confira o seu desempenho nesta categoria</p>
 
