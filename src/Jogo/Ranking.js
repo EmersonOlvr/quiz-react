@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { Container, List, Label, Image } from 'semantic-ui-react';
+import { Container, List } from 'semantic-ui-react';
+
+import Usuario from './Usuario';
 
 class Ranking extends Component {
     render() {
@@ -8,15 +10,26 @@ class Ranking extends Component {
                 <h2>RANKING</h2>
                 <p>Quem é o mestre???</p>
 
-                <List divided verticalAlign='left'>
-                    <List.Item>
-                        <List.Content floated='left'>
-                            <Image avatar src='' />
-                            Jurubeba Abigail
-                        </List.Content>
-                        <List.Content floated='right'>100 pontos</List.Content>
-                    </List.Item>
-                </List>
+                <Container>
+                    <List divided verticalAlign='left'>
+                        <Usuario 
+                            foto=''
+                            nome='Jurubeba Abigail'
+                            pontos='100'/>
+
+                        
+                        <Usuario 
+                            foto=''
+                            nome='Ubineide Montana'
+                            pontos='85'/>
+
+                        
+                        <Usuario 
+                            foto=''
+                            nome='Relâmpago Marquinhos'
+                            pontos='78'/>
+                    </List>
+                </Container>
             </div>
         )
     }
