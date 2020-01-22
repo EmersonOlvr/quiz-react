@@ -1,10 +1,25 @@
-import React, {Component} from 'react';
-import {Grid} from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
 import Navegacao from './Navegacao';
 import Categoria from './Categoria';
+import config from '../config';
 
 class Categorias extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            categorias: {}
+        }
+
+        config.syncState('categorias', {
+            context: this,
+            state: 'categorias',
+            asArray: false
+        })
+    }
+
     render() {
         return (
             <div>
@@ -13,13 +28,12 @@ class Categorias extends Component {
                 <p>Selecione a categoria que você quer responder perguntas</p>
 
                 <Grid columns={5} divided>
-                    <Categoria titulo='Futebol' icone='futbol outline'/>
-                    <Categoria titulo='Fórmula 1' icone='trophy'/>
-                    <Categoria titulo='Música' icone='music' />
-                    <Categoria titulo='Mundo' icone='globe'/>
-                    <Categoria titulo='Animais' icone='paw'/>
-                    <Categoria titulo='Brincadeira' icone='puzzle place' />
-                    <Categoria titulo='Profissões' icone='user md'/>
+                    {
+                        Object.keys(this.state.categorias)
+                            .map(chave => {
+                                return <Categoria key={chave} titulo={this.state.categorias[chave].nome} icone={this.state.categorias[chave].icone} />
+                            })
+                    }
                 </Grid>
             </div>
         )

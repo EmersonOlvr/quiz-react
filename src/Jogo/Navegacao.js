@@ -5,44 +5,67 @@ import firebase from 'firebase';
 
 class Navegacao extends Component {
     constructor(props) {
+        console.log('Jogo/Navegacao.js: constructor()')
         super(props)
 
         this.state = {
             usuario: '',
-            estaLogado: false
+            //estaLogado: false
         }
     }
 
     componentDidMount() {
-        const usuarioLogado = {
-            nome: localStorage.getItem('nome'),
-            foto: localStorage.getItem('foto')
-        }
+        console.log('Jogo/Navegacao.js: componentDidMount()')
+        const usuarioAtual = firebase.auth().currentUser
+        console.log('Jogo/Navegacao.js: usuarioAtual:')
+        console.log(usuarioAtual)
 
-        this.setState({
-            usuario: usuarioLogado,
-            estaLogado: !!localStorage.getItem('nome')
-        })
+        if (usuarioAtual !== null) {
+            const usuarioLogado = {
+                nome: usuarioAtual.displayName,
+                foto: usuarioAtual.photoURL
+            }
+
+            this.setState({
+                usuario: usuarioLogado,
+                estaLogado: true
+            })
+        }
     }
-    
+
     deslogarUsuario() {
-        /*firebase
+        console.log('Jogo/Navegacao.js: deslogarUsuario()')
+        firebase
             .auth()
             .signOut()
             .then(() => {
-                localStorage.removeItem('nome')
-                localStorage.removeItem('foto')
                 this.setState({
                     usuario: '',
                     estaLogado: false
                 })
+                console.log('O usuário foi deslogado.')
             })
             .catch(err => {
                 console.log('Erro ao deslogar usuário.')
-            })*/
+            })
+    }
+
+    teste() {
+        console.log('Jogo/Navegacao.js: teste()')
     }
 
     render() {
+        console.log('Jogo/Navegacao.js: render()')
+
+        if (!this.state.estaLogado) {
+            return (
+                <Menu>
+                    <Menu.Item><strong>Quiz</strong></Menu.Item>
+                    <Menu.Item as={Link} to='/'>Para jogar, favor se logar</Menu.Item>
+                </Menu>
+            )
+        }
+
         const { foto, nome } = this.state.usuario
         return (
             <header className='App-Header'>
@@ -53,6 +76,7 @@ class Navegacao extends Component {
                     <Menu.Item as={Link} to='/perguntas'>Perguntas</Menu.Item>
                     <Menu.Item as={Link} to='/resultado'>Resultado</Menu.Item>
                     <Menu.Item as={Link} to='/ranking'>Ranking</Menu.Item>
+                    <Menu.Item as={Link} to='/'>Está logado? - {this.state.estaLogado ? 'sim' : 'não'}</Menu.Item>
                     <Menu.Menu position='right'>
 
                         {
@@ -65,7 +89,7 @@ class Navegacao extends Component {
                             this.state.estaLogado &&
                             <Dropdown item text={nome}>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item onClick={this.deslogarUsuario()}>Sair</Dropdown.Item>
+                                    <Dropdown.Item onClick={this.deslogarUsuario}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         }
