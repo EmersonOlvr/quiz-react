@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 class Inicio extends Component {
     constructor(props) {
-        console.log('Inicio.js: constructor()')
+        // console.log('Inicio.js: constructor()')
         super(props)
 
         this.state = {
@@ -17,7 +17,7 @@ class Inicio extends Component {
 
         auth.onAuthStateChanged((usuario) => {
             if (usuario) {
-                console.log('Inicio.js: usuario (onAuthStateChanged()):')
+                // console.log('Inicio.js: usuario (onAuthStateChanged()):')
                 console.log(usuario)
                 this.setState({
                     usuario,
@@ -32,13 +32,13 @@ class Inicio extends Component {
     }
 
     autentica(provider) {
-        console.log('Inicio.js: autentica()')
+        // console.log('Inicio.js: autentica()')
         console.log(provider)
         auth.signInWithPopup(providers[provider])
     }
 
     render() {
-        console.log('Inicio.js: render()')
+        // console.log('Inicio.js: render()')
         if (this.state.estaLogado) {
             return <Redirect to='/categorias' />
         }

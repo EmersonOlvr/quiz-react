@@ -9,9 +9,10 @@ class Resultado extends Component {
             <div>
                 <Navegacao />
                 <h2>Seus resultados</h2>
+                {JSON.stringify(this.props.location.state)}
                 <p>Confira o seu desempenho nesta categoria</p>
 
-                <List divided verticalAlign='left'>
+                <List divided>
                     <List.Item>
                         <List.Content floated='left'>
                             <Label>1</Label>

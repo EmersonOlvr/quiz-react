@@ -5,7 +5,7 @@ import firebase from 'firebase';
 
 class Navegacao extends Component {
     constructor(props) {
-        console.log('Jogo/Navegacao.js: constructor()')
+        // console.log('Jogo/Navegacao.js: constructor()')
         super(props)
 
         this.state = {
@@ -15,7 +15,7 @@ class Navegacao extends Component {
     }
 
     componentDidMount() {
-        console.log('Jogo/Navegacao.js: componentDidMount()')
+        // console.log('Jogo/Navegacao.js: componentDidMount()')
         const usuarioAtual = firebase.auth().currentUser
         console.log('Jogo/Navegacao.js: usuarioAtual:')
         console.log(usuarioAtual)
@@ -34,7 +34,7 @@ class Navegacao extends Component {
     }
 
     deslogarUsuario() {
-        console.log('Jogo/Navegacao.js: deslogarUsuario()')
+        // console.log('Jogo/Navegacao.js: deslogarUsuario()')
         firebase
             .auth()
             .signOut()
@@ -50,12 +50,8 @@ class Navegacao extends Component {
             })
     }
 
-    teste() {
-        console.log('Jogo/Navegacao.js: teste()')
-    }
-
     render() {
-        console.log('Jogo/Navegacao.js: render()')
+        // console.log('Jogo/Navegacao.js: render()')
 
         if (!this.state.estaLogado) {
             return (
