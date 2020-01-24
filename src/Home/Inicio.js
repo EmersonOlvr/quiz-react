@@ -33,7 +33,6 @@ class Inicio extends Component {
 
     autentica(provider) {
         // console.log('Inicio.js: autentica()')
-        console.log(provider)
         auth.signInWithPopup(providers[provider])
     }
 

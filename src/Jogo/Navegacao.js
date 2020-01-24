@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Menu, Image, Dropdown, Icon } from 'semantic-ui-react';
 import firebase from 'firebase';
 
@@ -69,10 +69,7 @@ class Navegacao extends Component {
                     <Menu.Item><strong>Quiz</strong></Menu.Item>
                     <Menu.Item as={Link} to='/'>Home</Menu.Item>
                     <Menu.Item as={Link} to='/categorias'>Categorias</Menu.Item>
-                    <Menu.Item as={Link} to='/perguntas'>Perguntas</Menu.Item>
-                    <Menu.Item as={Link} to='/resultado'>Resultado</Menu.Item>
                     <Menu.Item as={Link} to='/ranking'>Ranking</Menu.Item>
-                    <Menu.Item as={Link} to='/'>Está logado? - {this.state.estaLogado ? 'sim' : 'não'}</Menu.Item>
                     <Menu.Menu position='right'>
 
                         {

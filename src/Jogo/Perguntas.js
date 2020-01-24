@@ -28,7 +28,6 @@ class Perguntas extends Component {
     }
 
     carregaPerguntas(cat) {
-        console.log('categoria da pergunta: ' + cat)
         this.setState({
             estaCarregando: true,
             perguntas: {}
